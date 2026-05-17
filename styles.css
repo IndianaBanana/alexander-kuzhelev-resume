@@ -103,7 +103,7 @@ body {
 /* ── LAYOUT ─────────────────────────────────── */
 .layout {
     display: grid;
-    grid-template-columns: 390px 1fr;
+    grid-template-columns: 350px 1fr;
     flex: 1;
     min-height: 0;
     overflow: hidden;
