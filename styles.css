@@ -225,7 +225,7 @@ body {
 }
 
 .exp-date {
-    font-size: 0.82rem;
+    font-size: 1rem;
     color: var(--accent);
     white-space: nowrap;
     margin-left: 16px;
