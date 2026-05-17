@@ -17,68 +17,119 @@
 
 html {
     font-size: 20px;
-    height: 100%;
 }
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     background: var(--bg);
     color: var(--text);
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+    min-height: 100vh;
     line-height: 1.5;
-    overflow: hidden;
 }
 
 /* ── TOPBAR ─────────────────────────────────── */
 .topbar {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 30px;
-    height: 72px;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 4px 9px;
+    padding: 14px 30px;
     background: var(--surface);
     border-bottom: 1px solid var(--border);
-    flex-shrink: 0;
-}
-
-.topbar-name {
-    display: flex;
-    align-items: baseline;
-    gap: 9px;
 }
 
 .name-first {
-    font-size: 1.35rem;
+    font-size: 1.55rem;
     font-weight: 700;
 }
 
 .name-last {
-    font-size: 1.35rem;
+    font-size: 1.55rem;
     font-weight: 700;
     color: var(--accent);
 }
 
 .topbar-role {
-    font-size: 0.78rem;
+    font-size: 1rem;
     color: var(--muted);
     text-transform: uppercase;
     letter-spacing: 1.3px;
     margin-left: 8px;
 }
 
-.topbar-contacts {
+/* ── LAYOUT ─────────────────────────────────── */
+.layout {
+    padding: 22px 30px;
+}
+
+.content {
     display: flex;
-    gap: 8px;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* ── TOP ROW (About + Skills cards) ──────────── */
+.top-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 13px;
+}
+
+.card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 11px;
+    padding: 20px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* ── ABOUT CARD ────────────────────────────── */
+.card-about-inner {
+    display: flex;
+    gap: 22px;
+    align-items: flex-start;
+}
+
+.photo {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 2px solid var(--accent);
+    display: block;
+    flex-shrink: 0;
+}
+
+.about-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.bio {
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.7;
+}
+
+.contacts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: auto;
 }
 
 .contact-link {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    padding: 6px 14px;
-    font-size: 0.78rem;
+    padding: 5px 12px;
+    font-size: 0.75rem;
     font-weight: 500;
     color: var(--text);
     text-decoration: none;
@@ -100,40 +151,6 @@ body {
     background: var(--accent-dim);
 }
 
-/* ── LAYOUT ─────────────────────────────────── */
-.layout {
-    display: grid;
-    grid-template-columns: 350px 1fr;
-    flex: 1;
-    min-height: 0;
-    overflow: hidden;
-}
-
-/* ── SIDEBAR ─────────────────────────────────── */
-.sidebar {
-    background: var(--surface);
-    border-right: 1px solid var(--border);
-    padding: 24px 22px;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 22px;
-}
-
-.sidebar::-webkit-scrollbar { width: 3px; }
-.sidebar::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
-
-.photo {
-    width: 100%;
-    max-width: 300px;
-    height: 300px;
-    object-fit: cover;
-    border-radius: 12px;
-    border: 2px solid var(--accent);
-    display: block;
-    margin: 0 auto;
-}
-
 /* ── LABELS ─────────────────────────────────── */
 .label {
     font-size: 0.7rem;
@@ -144,12 +161,9 @@ body {
     margin-bottom: 12px;
 }
 
-.sidebar-section { display: flex; flex-direction: column; }
-
-.bio {
-    font-size: 0.88rem;
-    color: var(--muted);
-    line-height: 1.7;
+.section {
+    display: flex;
+    flex-direction: column;
 }
 
 /* ── SKILL GROUPS ───────────────────────────── */
@@ -186,24 +200,6 @@ body {
     border-color: rgba(232, 131, 58, 0.5);
     color: var(--accent);
     background: var(--accent-dim);
-}
-
-/* ── CONTENT ────────────────────────────────── */
-.content {
-    padding: 22px 30px;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    min-height: 0;
-}
-
-.content::-webkit-scrollbar { width: 3px; }
-.content::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
-
-.section {
-    display: flex;
-    flex-direction: column;
 }
 
 /* ── EXPERIENCE ─────────────────────────────── */
@@ -342,47 +338,38 @@ body {
 /* ── RESPONSIVE ─────────────────────────────── */
 @media (max-width: 1100px) {
     html { font-size: 18px; }
-    .layout { grid-template-columns: 300px 1fr; }
-    .photo { max-width: 200px; height: 200px; }
-}
-
-@media (max-width: 960px) {
-    html { font-size: 20px; }
-    html, body { overflow: auto; height: auto; }
-
-    .layout {
-        grid-template-columns: 1fr;
-        overflow: visible;
-    }
-
-    .sidebar {
-        border-right: none;
-        border-bottom: 1px solid var(--border);
-        flex-direction: row;
-        flex-wrap: wrap;
-        gap: 16px;
-        overflow: visible;
-    }
-
-    .photo { max-width: 250px; height: 250px; margin: 0; }
-
-    .content { overflow: visible; }
-
+    .layout { padding: 18px 20px; }
+    .photo { width: 200px; height: 200px; }
     .projects-row { grid-template-columns: 1fr 1fr; }
-    .edu-row      { grid-template-columns: 1fr 1fr; }
+
+    .card-about-inner {
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
-@media (max-width: 600px) {
-    html { font-size: 20px; }
+@media (max-width: 768px) {
+    html { font-size: 18px; }
+    .layout { padding: 16px; }
+    .topbar { padding: 0 16px; }
 
-    .topbar {
-        flex-direction: column;
-        height: auto;
-        padding: 12px 16px;
-        gap: 8px;
-    }
+    .top-row { grid-template-columns: 1fr; }
+    .projects-row { grid-template-columns: 1fr 1fr; }
+    .edu-row { grid-template-columns: 1fr 1fr; }
 
-    .topbar-contacts { flex-wrap: wrap; justify-content: center; }
+    .contact-text { display: none; }
+    .contact-link { padding: 8px; border-radius: 8px; }
+    .contact-icon { width: 18px; height: 18px; }
+}
+
+@media (max-width: 550px) {
+    html { font-size: 18px; }
+    .layout { padding: 12px; }
+
+    .photo { width: 180px; height: 180px; }
+
+    .exp-header { flex-direction: column; gap: 4px; }
+    .exp-date { margin-left: 0; }
 
     .projects-row,
     .edu-row { grid-template-columns: 1fr; }
