@@ -5,10 +5,10 @@
 }
 
 :root {
-    --bg:          #0d0f17;
-    --surface:     #141720;
-    --surface2:    #1b1f2e;
-    --border:      #252a3d;
+    --bg:          #181b2a;
+    --surface:     #1f2336;
+    --surface2:    #272b3e;
+    --border:      #343a54;
     --text:        #dde3ef;
     --muted:       #cdd2df;
     --accent:      #e8833a;
@@ -74,14 +74,24 @@ body {
 }
 
 .contact-link {
-    padding: 7px 18px;
-    font-size: 0.88rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    font-size: 0.78rem;
     font-weight: 500;
-    color: var(--muted);
+    color: var(--text);
     text-decoration: none;
     border: 1px solid var(--border);
     border-radius: 6px;
     transition: color 0.2s, border-color 0.2s, background 0.2s;
+    white-space: nowrap;
+}
+
+.contact-icon {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
 }
 
 .contact-link:hover {
